@@ -1,0 +1,20 @@
+name: Sync GitHub Repo Settings
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/settings.yml"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync repository settings
+        uses: repo-sync/github-settings@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          config-path: .github/settings.yml
