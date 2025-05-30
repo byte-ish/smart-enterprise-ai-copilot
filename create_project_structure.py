@@ -25,8 +25,9 @@ FILES = [
     "README.md",
     "requirements.txt",
     ".env.example",
-    "pyproject.toml"  # optional: used if you later switch to Poetry
+    "pyproject.toml",  # optional: used if you later switch to Poetry
 ]
+
 
 def create_project_structure():
     # Create base directory
@@ -47,6 +48,7 @@ def create_project_structure():
             f.write("")
 
     print(f"✅ Project structure for '{BASE_DIR}' created successfully.")
+
 
 if __name__ == "__main__":
     create_project_structure()
