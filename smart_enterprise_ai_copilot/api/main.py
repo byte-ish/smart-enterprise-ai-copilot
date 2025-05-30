@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from smart_enterprise_ai_copilot.api.middleware.exception_handler import (
-    ExceptionHandlingMiddleware,
-)
-from smart_enterprise_ai_copilot.api.routes.health import router as health_router
+from smart_enterprise_ai_copilot.api.middleware.exception_handler import \
+    ExceptionHandlingMiddleware
+from smart_enterprise_ai_copilot.api.routes.health import \
+    router as health_router
 from smart_enterprise_ai_copilot.utils.logger import setup_logging
 
 # Setup logging
