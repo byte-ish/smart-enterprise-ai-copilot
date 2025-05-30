@@ -10,8 +10,7 @@ jobs:
   lint-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -49,22 +48,24 @@ jobs:
     needs: lint-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Build Docker Image
         run: docker build -t smart-enterprise-ai-copilot:latest .
 
       - name: Log in to Docker Hub
-        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
+        if: ${{ env.DOCKER_USERNAME && env.DOCKER_PASSWORD }}
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Push Docker Image
-        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
+        if: ${{ env.DOCKER_USERNAME && env.DOCKER_PASSWORD }}
         run: |
-          docker tag smart-enterprise-ai-copilot:latest ${{ secrets.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
+          docker tag smart-enterprise-ai-copilot:latest ${{ env.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
+          docker push ${{ env.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
