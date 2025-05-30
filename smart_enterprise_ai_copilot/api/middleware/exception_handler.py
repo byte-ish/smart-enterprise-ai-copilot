@@ -8,7 +8,9 @@ from loguru import logger
 from starlette.middleware.base import BaseHTTPMiddleware
 
 
-class ExceptionHandlingMiddleware(BaseHTTPMiddleware): # pylint: disable=too-few-public-methods
+class ExceptionHandlingMiddleware(
+    BaseHTTPMiddleware
+):  # pylint: disable=too-few-public-methods
     """
     Middleware to catch unhandled exceptions, log them, and return
     a standardized 500 Internal Server Error response.

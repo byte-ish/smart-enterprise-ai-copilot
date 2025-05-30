@@ -11,6 +11,7 @@ class InterceptHandler(logging.Handler):
     """
     Handler to redirect standard logging to Loguru.
     """
+
     def emit(self, record):
         logger_opt = logger.opt(depth=6, exception=record.exc_info)
         logger_opt.log(record.levelno, record.getMessage())
