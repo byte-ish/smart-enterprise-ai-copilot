@@ -56,16 +56,15 @@ jobs:
       - name: Build Docker Image
         run: docker build -t smart-enterprise-ai-copilot:latest .
 
-      # Optional: Push to Docker Hub (configure secrets for DOCKER_USERNAME and DOCKER_PASSWORD)
       - name: Log in to Docker Hub
-        if: secrets.DOCKER_USERNAME && secrets.DOCKER_PASSWORD
+        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image
-        if: secrets.DOCKER_USERNAME && secrets.DOCKER_PASSWORD
+        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
         run: |
           docker tag smart-enterprise-ai-copilot:latest ${{ secrets.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/smart-enterprise-ai-copilot:latest
