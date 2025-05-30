@@ -4,6 +4,7 @@ Logging setup module using Loguru with redirection of standard logging.
 
 import logging
 import sys
+
 from loguru import logger
 
 
