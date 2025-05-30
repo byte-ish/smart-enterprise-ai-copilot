@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "smart-enterprise-ai-copilot"
+name = "smart_enterprise_ai_copilot"
 version = "0.1.0"
 description = "Modular AI agent system for enterprise workflows"
 authors = ["Ish Mishra <ish@example.com>"]
