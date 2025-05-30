@@ -5,6 +5,10 @@ description = "Modular AI agent system for enterprise workflows"
 authors = ["Ish Mishra <ish@example.com>"]
 packages = [{ include = "smart_enterprise_ai_copilot" }]
 
+[tool.isort]
+profile = "black"
+line_length = 88
+
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"
 fastapi = ">=0.115.12,<0.116.0"
