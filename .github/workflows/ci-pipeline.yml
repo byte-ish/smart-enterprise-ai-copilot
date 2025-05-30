@@ -37,7 +37,7 @@ jobs:
         run: poetry run pylint smart_enterprise_ai_copilot
 
       - name: Run Pytest with Coverage
-        run: poetry run pytest --cov=smart_enterprise_ai_copilot tests/
+        run: poetry run pytest --cov=smart_enterprise_ai_copilot smart_enterprise_ai_copilot/tests/
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4.6.2
