@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Poetry and Python environment
+.env
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+
+# Poetry lock and cache (optional, if you want fresh install inside Docker)
+poetry.lock
+*.lock
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# Git files
+.git/
+.gitignore
+
+# Docker files
+Dockerfile*
+docker-compose.yml
+
+# Tests (optional, if you don't want to copy test code)
+tests/
+
+# Documentation
+docs/
